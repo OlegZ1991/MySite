@@ -15,6 +15,7 @@
 	 <form action="" method="post">
 	  <div>
        <?php htmlout($author['authorname']); ?>
+	   <?php htmlout($author['mail']); ?>
 	   <input type="hidden" name="id" value="<?php htmlout($author['id']); ?>">
 	   <input type="submit" name="action" value="редактировать">
 	   <input type="submit" name="action" value="удалить">
