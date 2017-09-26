@@ -33,7 +33,26 @@ if(isset($_POST['action']) and $_POST['action'] == 'Удалить'){
 	header('Location:.');
 	exit();
 }
-//Добавление новых категорий !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+if(isset($_GET['add']))
+{
+	$pagetitle = 'Добавление категории';
+	$action = 'addform';
+	$name='';
+	$mail='';
+	$id='';
+	$button='Добавить категорию';
+	include 'Form.html.php';
+	exit();
+}
+if(isset($_GET['addform'])){//Продолжить отсюда!!!!!!!!!!!!!!!!!!!
+	/*
+	1.Формируется запрос к базе данных. Запрос INSERT.
+	2.Структура запроса - параметризированная.
+	3.обновление страницы
+	4.выход
+	*/
+	
+}
 //display all categories:
 include $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php';
 try{

@@ -7,6 +7,7 @@
   <title>Перечень категорий</title>
  </head>
  <body>
+ <a href='?add'>Добавить категорию</a>
  <ul>
    <?php foreach($categories as $category): ?>
     <li>
