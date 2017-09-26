@@ -38,7 +38,6 @@ if(isset($_GET['add']))
 	$pagetitle = 'Добавление категории';
 	$action = 'addform';
 	$name='';
-	$mail='';
 	$id='';
 	$button='Добавить категорию';
 	include 'Form.html.php';
@@ -53,7 +52,8 @@ if(isset($_GET['addform'])){//Продолжить отсюда!!!!!!!!!!!!!!!!!
 	3.обновление страницы
 	4.выход
 	*/
-	
+	include $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php';
+	$sql = 'INSERT INTO category (name) VALUES (:name)';
 }
 //display all categories:
 include $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php';
