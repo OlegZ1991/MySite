@@ -46,11 +46,70 @@ if(isset($_GET['add']))
 }
 if(isset($_GET['addform']))
 {
-	include $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php';
-	$sql = 'INSERT INTO category (name) VALUES (:name)';
-	$s = $pdo->prepare($sql);
-	$s->BindValue(":name", $_POST['name']);
-	$s->execute();
+	try
+	{
+		include $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php';
+		$sql = 'INSERT INTO category (name) VALUES (:name)';
+		$s = $pdo->prepare($sql);
+		$s->BindValue(":name", $_POST['name']);
+		$s->execute();
+	}
+	catch(PDOException $e)
+	{
+		$error = "Ошибка при удалении из базы данных.";
+		include "error.html.php";
+		exit();
+	}
+
+	header('location:.');
+	exit();
+}
+//Редактирование категорий:
+if(isset($_POST['action']) and $_POST['action'] == 'Редактировать')
+{
+	try
+	{
+		include $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php';
+		$sql = 'SELECT name, id FROM category WHERE id=:id';
+		$s = $pdo->prepare($sql);
+		$s->BindValue(":id", $_POST['id']);
+		$s->execute();
+	}
+	catch(PDOException $e)
+	{
+		$error = "Ошибка при извлечении из базы данных.";
+		include "error.html.php";
+		exit();
+	}
+	
+	$result = $s->fetch();
+	
+	$pagetitle = 'Редактирование категории';
+	$action = 'editform';
+	$name = $result['name'];
+	$id = $result['id'];
+	$button='Редактировать категорию';
+	include 'Form.html.php';
+	exit();
+}
+if(isset($_GET['editform']))
+{
+	try
+	{
+		include $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php';
+		$sql = 'UPDATE category SET name=:name WHERE id=:id';
+		$s = $pdo->prepare($sql);
+		$s->BindValue(":id", $_POST['id']);
+		$s->BindValue(":name", $_POST['name']);
+		$s->execute();
+	}
+	catch(PDOException $e)
+	{
+		$error = "Ошибка при извлечении из базы данных.";
+		include "error.html.php";
+		exit();
+	}
+	
 	header('location:.');
 	exit();
 }

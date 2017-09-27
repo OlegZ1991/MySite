@@ -14,10 +14,15 @@
     <form action="" method="post">
 		 <?php htmlout($category['name']); ?>
 	  <input type='submit' name='action' value='Удалить'>
+	  <input type='submit' name='action' value='Редактировать'>
 	  <input type='hidden' name='id' value=<?php htmlout($category['id']); ?>>
 	</form>
 	</li>
    <?php endforeach; ?>
    </ul>
  </body>
+ <!--
+	Создание логики редактирования.
+	1. Добавить код, описывающий кнопку с название "Редактировать".
+ -->
 </html>
