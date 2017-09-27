@@ -33,6 +33,7 @@ if(isset($_POST['action']) and $_POST['action'] == 'Удалить'){
 	header('Location:.');
 	exit();
 }
+//Добавление категорий
 if(isset($_GET['add']))
 {
 	$pagetitle = 'Добавление категории';
@@ -43,17 +44,15 @@ if(isset($_GET['add']))
 	include 'Form.html.php';
 	exit();
 }
-if(isset($_GET['addform'])){//Продолжить отсюда!!!!!!!!!!!!!!!!!!!
-	/*
-	0.Выполняется подключение к базе данных.
-	1.Формируется запрос к базе данных. Запрос INSERT.
-	2.Структура запроса - параметризированная.
-	2а.Весь запрос заключается в блок try/catch
-	3.обновление страницы
-	4.выход
-	*/
+if(isset($_GET['addform']))
+{
 	include $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php';
 	$sql = 'INSERT INTO category (name) VALUES (:name)';
+	$s = $pdo->prepare($sql);
+	$s->BindValue(":name", $_POST['name']);
+	$s->execute();
+	header('location:.');
+	exit();
 }
 //display all categories:
 include $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php';
