@@ -14,6 +14,7 @@
   <li><?php htmlout($joke['joketext']);?></li>
   <?php endforeach; ?>
   </ul>
+  <a href='?'>Искать заново</a>
  </body>
 
 </html>

@@ -29,9 +29,10 @@ if(isset($_GET['action']) and $_GET['action'] == 'search')
 	$sql = $select. $from. $where;
 	$s = $pdo->prepare($sql);
 	$s->execute($placeholders);
-	if($s != null)
+	$result = $s->fetchall();
+	if($result != null)
 	{
-		foreach($s as $row)
+		foreach($result as $row)
 	{
 		$jokes[] = array('joketext'=>$row['joketext'], 'id'=>$row['id']);
 	}
@@ -40,7 +41,7 @@ if(isset($_GET['action']) and $_GET['action'] == 'search')
 	}
 	else
 	{
-		echo 'Не найдено шуток, удовлетворяющих введенному критерию';
+		echo "Не найдено шуток, удовлетворяющих введенному критерию, попробуйте <a href='?'>искать заново</a>";
 		exit();
 	}
 
