@@ -29,7 +29,7 @@ if(isset($_GET['action']) and $_GET['action'] == 'search')
 	$sql = $select. $from. $where;
 	$s = $pdo->prepare($sql);
 	$s->execute($placeholders);
-	if($s == null)
+	if($s != null)
 	{
 		foreach($s as $row)
 	{
@@ -43,6 +43,7 @@ if(isset($_GET['action']) and $_GET['action'] == 'search')
 		echo 'Не найдено шуток, удовлетворяющих введенному критерию';
 		exit();
 	}
+
 }
 
 include $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php';
