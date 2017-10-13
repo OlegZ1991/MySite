@@ -9,11 +9,26 @@
  </head>
 
  <body>
- <ul>
-  <?php foreach($jokes as $joke): ?>
-  <li><?php htmlout($joke['joketext']);?></li>
-  <?php endforeach; ?>
-  </ul>
+ <h1>Результаты поиска</h1>
+  <table>
+	<tr><th>Текст шутки</th><th>Действия</th></tr>
+	<?php foreach($jokes as $joke): ?>
+	<tr>
+	 <td>
+      <?php htmlout($joke['joketext']);?>
+     </td>
+	 <td>
+	  <form>
+	   <div>
+	    <input type='hidden'>
+	    <input type='button' name='action' value='Редактировать'>
+	    <input type='button' name='action' value='Удалить'>
+	   </div>
+	  </form>
+	 </td>
+	</tr>
+	<?php endforeach; ?>
+  </table>
   <a href='?'>Искать заново</a>
  </body>
 
