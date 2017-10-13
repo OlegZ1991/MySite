@@ -2,12 +2,10 @@
 
 <!DOCTYPE html>
 <html lang='en'>
-
  <head>
  <meta charset='utf-8'>
  <title>Результаты поиска</title>
  </head>
-
  <body>
  <h1>Результаты поиска</h1>
   <table>
@@ -18,7 +16,7 @@
       <?php htmlout($joke['joketext']);?>
      </td>
 	 <td>
-	  <form>
+	  <form action='?' method='post'>
 	   <div>
 	    <input type='hidden'>
 	    <input type='button' name='action' value='Редактировать'>
@@ -29,7 +27,7 @@
 	</tr>
 	<?php endforeach; ?>
   </table>
-  <a href='?'>Искать заново</a>
+  <p><a href='?'>Искать заново</a></p>
+  <p><a href='..'>Вернуться на главную страницу</a></p>
  </body>
-
 </html>
