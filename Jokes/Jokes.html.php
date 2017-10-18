@@ -18,9 +18,9 @@
 	 <td>
 	  <form action='?' method='post'>
 	   <div>
-	    <input type='hidden'>
-	    <input type='button' name='action' value='Редактировать'>
-	    <input type='button' name='action' value='Удалить'>
+	    <input type='hidden' name='id' value='<?php htmlout($joke['id']); ?>'>
+	    <input type='submit' name='action' value='Редактировать'>
+	    <input type='submit' name='action' value='Удалить'>
 	   </div>
 	  </form>
 	 </td>
