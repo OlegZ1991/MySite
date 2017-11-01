@@ -8,6 +8,7 @@
  </head>
  <body>
  <h1>Результаты поиска</h1>
+ <?php if(isset($jokes)): ?>
   <table>
 	<tr><th>Текст шутки</th><th>Действия</th></tr>
 	<?php foreach($jokes as $joke): ?>
@@ -27,6 +28,7 @@
 	</tr>
 	<?php endforeach; ?>
   </table>
+  <?php endif; ?>
   <p><a href='?'>Искать заново</a></p>
   <p><a href='..'>Вернуться на главную страницу</a></p>
  </body>
